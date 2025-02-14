@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<script>
+    // Placeholder script for now to go through images
+    // Prefer to make something more dynamic
+    // https://stackoverflow.com/questions/11073693/button-click-iterate-through-images
+    var images = ["auspicious.jpg", "grotto.jpg", "shin-okubo.jpg", "kittens.jpg", "kyoto.jpg", "nippon.jpg"];
+    var currentImage = 0; //defaults to image1.jpg
+
+    function goNext() {
+        currentImage += 1;
+
+        //loop back to the first image
+        if(currentImage >= images.length) {
+            currentImage = 0;
+        }
+
+        document.getElementById("currImage").src = "images/" + images[currentImage];
+    }
+
+</script>
+<body>
+
+
+<h1>Image App</h1>
+<p>Thomas McLaughlin</p>
+<div style="text-align: center;">
+    <img id="currImage" src="images/auspicious.jpg" width="600" height="600"> 
+    <!-- The above req goes through node.js and gets logged in console. -->
+    <br>
+    <button onclick="goNext()">Next Image</button>
+</div>
+
+
+</body>
+</html>
