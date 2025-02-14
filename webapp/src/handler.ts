@@ -20,7 +20,7 @@ export const handler = (req: IncomingMessage, res:ServerResponse) => {
                 res.end('Image not found.');
                 return;
             }
-            res.writeHead(200, {'Content-Type': 'image/jpeg'});
+            res.writeHead(200, {'Content-Type': 'image/jpeg'}); // all images are jpeg
             res.end(data);
         });
         return;
@@ -35,8 +35,8 @@ export const handler = (req: IncomingMessage, res:ServerResponse) => {
             return res.end();
         }
         res.writeHead(200, {'Content-Type': 'text/html'});
-        res.write(data);
-        res.end();
+        res.write(data); // writes content of index.html
+        res.end(); // finalizes response and sends to the user
         
     });
 

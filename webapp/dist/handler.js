@@ -19,7 +19,7 @@ const handler = (req, res) => {
                 res.end('Image not found.');
                 return;
             }
-            res.writeHead(200, { 'Content-Type': 'image/jpeg' });
+            res.writeHead(200, { 'Content-Type': 'image/jpeg' }); // all images are jpeg
             res.end(data);
         });
         return;
@@ -32,8 +32,8 @@ const handler = (req, res) => {
             return res.end();
         }
         res.writeHead(200, { 'Content-Type': 'text/html' });
-        res.write(data);
-        res.end();
+        res.write(data); // writes content of index.html
+        res.end(); // finalizes response and sends to the user
     });
     //readFile reads contents of data.json
     // fs.readFile("data.json", (err: Error | null, data: Buffer) => {
