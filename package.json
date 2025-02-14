@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/mclaughlin-thomas/NodeJS-ImageApp/issues"
   },
-  "homepage": "https://github.com/mclaughlin-thomas/NodeJS-ImageApp#readme"
+  "homepage": "https://github.com/mclaughlin-thomas/NodeJS-ImageApp#readme",
+  "devDependencies": {
+    "tsc-watch": "^6.0.4",
+    "typescript": "^5.2.2"
+  }
 }
