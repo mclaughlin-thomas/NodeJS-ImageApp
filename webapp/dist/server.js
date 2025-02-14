@@ -8,6 +8,8 @@ const http_1 = require("http");
 const handler_1 = require("./handler");
 const port = 8000;
 const server = (0, http_1.createServer)(handler_1.handler);
+// Callback fcn passed to the createServer function
+// handler will be invoked when Node.js receives an HTTP connection
 server.listen(port, function () {
     console.log(`Server listening on port ${port}`);
 });
