@@ -4,7 +4,8 @@
 // HTTP responses are created using the ServerResponse object.
 
 import { IncomingMessage, ServerResponse } from "http";
-import { readFile } from "fs";
+import { readFile, readdir } from "fs";
+// pulling readdir from fs module to get filenames
 
 export const handler = (req: IncomingMessage, res:ServerResponse) => {
     //readFile reads contents of data.json
