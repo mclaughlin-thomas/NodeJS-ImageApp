@@ -7,9 +7,11 @@ import { IncomingMessage, ServerResponse } from "http";
 import { readFile } from "fs";
 
 export const handler = (req: IncomingMessage, res:ServerResponse) => {
+    //readFile reads contents of data.json
     readFile("data.json", (err: Error | null, data: Buffer) => {
         if (err == null) {
             res.end(data, () => console.log("Filesent"));
+            // callback here logs FileSent after sending data to screen
         }
         else {
             console.log(`Error: ${err.message}`);
