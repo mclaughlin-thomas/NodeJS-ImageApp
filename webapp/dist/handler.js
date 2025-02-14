@@ -7,9 +7,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.handler = void 0;
 const fs_1 = require("fs");
 const handler = (req, res) => {
+    //readFile reads contents of data.json
     (0, fs_1.readFile)("data.json", (err, data) => {
         if (err == null) {
             res.end(data, () => console.log("Filesent"));
+            // callback here logs FileSent after sending data to screen
         }
         else {
             console.log(`Error: ${err.message}`);
