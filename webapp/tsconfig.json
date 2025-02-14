@@ -1,5 +1,5 @@
 // Thomas McLaughlin
-// Additional ts compiler config file
+// Additional ts compiler config file.
 
 {
     "extends": "@tsconfig/node20/tsconfig.json",
