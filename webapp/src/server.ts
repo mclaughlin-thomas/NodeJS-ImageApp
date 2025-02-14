@@ -9,6 +9,9 @@ import { handler } from "./handler";
 const port = 8000;
 
 const server = createServer(handler);
+// Callback fcn passed to the createServer function
+// handler will be invoked when Node.js receives an HTTP connection
+
 server.listen(port, function() {
     console.log(`Server listening on port ${port}`);
 });
