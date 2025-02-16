@@ -4,11 +4,10 @@
 <html>
 
 <script>
-    // Placeholder script for now to go through images
     // Prefer to make something more dynamic
-    // https://stackoverflow.com/questions/11073693/button-click-iterate-through-images
+    // Referenced https://stackoverflow.com/questions/11073693/button-click-iterate-through-images
     var images = ["auspicious.jpg", "grotto.jpg", "shin-okubo.jpg", "kittens.jpg", "kyoto.jpg", "nippon.jpg"];
-    var currentImage = 0; //defaults to auspicious.jpg
+    var currentImage = 0; //defaults to first item in array: auspicious.jpg
 
     function nextImage() {
         currentImage ++;
@@ -19,6 +18,7 @@
         }
 
         document.getElementById("currImage").src = "images/" + images[currentImage];
+        // manipulating the currImage element's source to images/<currentImage + 1>
     }
 
 </script>
