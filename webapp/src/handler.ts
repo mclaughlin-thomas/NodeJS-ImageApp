@@ -6,8 +6,8 @@
 // This largely uses the same setup as seen in our book Mastering Node.js
 // with some reference to outside resources to serve html and jpeg files.
 // The book does a good job of explaining TypeScript and JavaScript topics,
-// but from the sections read so far they did not cover how to 
-// handle requests for files.
+// but from the sections read so far they did not cover how to handle
+// requests for files.
 // Aside from referencing our book I watched this tutorial on how to service files:
 // https://www.youtube.com/watch?v=p5eCYKiZN-4&t=46s.
 // As well as the video posted on schoology:
