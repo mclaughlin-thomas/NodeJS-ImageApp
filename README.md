@@ -2,6 +2,7 @@
 
 ## Overview
 This application allows users to flip through images provided by server.
+<img src="demo.png" alt="demo" width="600"/>
 
 ## Instruction
 Navigate to: ```/home/thomas/Documents/Node/ImageApp/webapp``` and ```run npm``` start to start the server.
