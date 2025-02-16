@@ -4,21 +4,23 @@
 <html>
 
 <script>
-    // Prefer to make something more dynamic
-    // Referenced https://stackoverflow.com/questions/11073693/button-click-iterate-through-images
-    var images = ["auspicious.jpg", "grotto.jpg", "shin-okubo.jpg", "kittens.jpg", "kyoto.jpg", "nippon.jpg"];
-    var currentImage = 0; //defaults to first item in array: auspicious.jpg
+    
+    // Referenced & Improved function seen here with concepts found in our book Mastering Node.js
+    // https://stackoverflow.com/questions/11073693/button-click-iterate-through-images
+
+    const images = ["auspicious.jpg", "grotto.jpg", "shin-okubo.jpg", "kittens.jpg", "kyoto.jpg", "nippon.jpg"];
+    let currentImageIndex = 0; //defaults to first item in array: auspicious.jpg
 
     function nextImage() {
-        currentImage ++;
+        currentImageIndex ++;
 
         // Iterated through all images? -> start over
-        if(currentImage == images.length) {
-            currentImage = 0;
+        if(currentImageIndex == images.length) {
+            currentImageIndex = 0;
         }
 
-        document.getElementById("currImage").src = "images/" + images[currentImage];
-        // manipulating the currImage element's source to images/<currentImage + 1>
+        // Updating the currImage element's source to images/<the next image name>
+        document.getElementById("currImage").src = "images/" + images[currentImageIndex];
     }
 
 </script>
