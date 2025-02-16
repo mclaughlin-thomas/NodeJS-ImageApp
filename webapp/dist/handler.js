@@ -13,7 +13,6 @@ const handler = (req, res) => {
         console.log(imagePath); // For debugging
         console.log(req.url); // For debugging
         fs.readFile(imagePath, (error, data) => {
-            // console.log(typeof data);
             if (error) {
                 res.writeHead(404, { 'Content-Type': 'text/plain' });
                 res.end('Image not found.');
@@ -25,7 +24,6 @@ const handler = (req, res) => {
         return;
     }
     fs.readFile('dist/index.html', function (error, data) {
-        // console.log(typeof data); Documentation says this should be a buffer but says it is an object
         if (error) {
             res.writeHead(500, { 'Content-Type': 'text/plain' });
             res.write('Error!');
@@ -35,17 +33,5 @@ const handler = (req, res) => {
         res.write(data); // writes content of index.html
         res.end(); // finalizes response and sends to the user
     });
-    //readFile reads contents of data.json
-    // fs.readFile("data.json", (err: Error | null, data: Buffer) => {
-    //     if (err == null) {
-    //         res.end(data, () => console.log("Filesent"));
-    //         // callback here logs FileSent after sending data to screen
-    //     }
-    //     else {
-    //         console.log(`Error: ${err.message}`);
-    //         res.statusCode = 500;
-    //         res.end();
-    //     }
-    // });
 };
 exports.handler = handler;
