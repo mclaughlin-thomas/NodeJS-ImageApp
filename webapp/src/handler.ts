@@ -8,7 +8,7 @@
 // The book does a good job of explaining TypeScript and JavaScript topics,
 // but from the sections read so far they did not explicitly cover how to 
 // handle requests for files. Aside from referencing our book I watched
-// this tutorial on serving a 
+// this tutorial on servicing files https://www.youtube.com/watch?v=p5eCYKiZN-4&t=46s.
 
 
 import { IncomingMessage, ServerResponse } from "http";
