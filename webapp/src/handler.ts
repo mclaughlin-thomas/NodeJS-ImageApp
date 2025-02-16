@@ -6,9 +6,9 @@
 // This largely uses the same setup as seen in our book Mastering Node.js
 // with some reference to outside resources to serve html and jpeg files.
 // The book does a good job of explaining TypeScript and JavaScript topics,
-// but from the sections read so far they did not explicitly cover how to 
+// but from the sections read so far they did not cover how to 
 // handle requests for files. Aside from referencing our book I watched
-// this tutorial on servicing files https://www.youtube.com/watch?v=p5eCYKiZN-4&t=46s.
+// this tutorial on how to service files https://www.youtube.com/watch?v=p5eCYKiZN-4&t=46s.
 
 
 import { IncomingMessage, ServerResponse } from "http";
@@ -18,7 +18,8 @@ const path= require('path');
 export const handler = (req: IncomingMessage, res:ServerResponse) => {
     
     if(req.url?.startsWith('/images/')){
-        //Our images have requests as well!
+        // Our images have requests as well!
+        // Every time the user hits next image, this will run.
 
         console.log(req.url); // For debugging. This is the vanilla url of the request, i.e., /images/auspicious.jpg
         const imagePath= path.join(__dirname, req.url); // appending
@@ -38,7 +39,7 @@ export const handler = (req: IncomingMessage, res:ServerResponse) => {
     
     fs.readFile('dist/index.html', function(error: any, data: Buffer){
         // Using dist/index.html because this logic ran from dist directory
-        
+
         if(error){
             res.writeHead(500, {'Content-Type': 'text/plain'});
             res.write('Error!');

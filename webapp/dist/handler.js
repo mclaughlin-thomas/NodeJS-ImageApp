@@ -9,7 +9,8 @@ const fs = require('fs');
 const path = require('path');
 const handler = (req, res) => {
     if (req.url?.startsWith('/images/')) {
-        //Our images have requests as well!
+        // Our images have requests as well!
+        // Every time the user hits next image, this will run.
         console.log(req.url); // For debugging. This is the vanilla url of the request, i.e., /images/auspicious.jpg
         const imagePath = path.join(__dirname, req.url); // appending
         console.log(imagePath); // For debugging. This is the entire path, /home/thomas/Documents/Node/ImageApp/webapp/dist/images/auspicious.jpg
