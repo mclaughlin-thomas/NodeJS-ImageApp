@@ -27,6 +27,7 @@ const handler = (req, res) => {
         return;
     }
     if (req.url?.endsWith('.js')) {
+        // Every time the user hits next image, a request for next.js is made.
         console.log(req.url); // For debugging. This is the vanilla url of the request, i.e., next.js
         const scriptPath = path.join(__dirname, req.url); // appending
         console.log(scriptPath); // For debugging. This is the entire path, /home/thomas/Documents/Node/ImageApp/webapp/dist/next.js
@@ -36,9 +37,8 @@ const handler = (req, res) => {
                 res.end('File not Found...');
                 return;
             }
-            // all images are jpeg
             res.writeHead(200, { 'Content-Type': 'text/javascript' });
-            res.end(data); // send image to user
+            res.end(data); // send javascript
         });
         return;
     }
