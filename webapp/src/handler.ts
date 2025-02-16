@@ -43,9 +43,9 @@ export const handler = (req: IncomingMessage, res:ServerResponse) => {
     if(req.url?.endsWith('.js')){
 
         console.log(req.url); // For debugging. This is the vanilla url of the request, i.e., next.js
-        const imagePath= path.join(__dirname, req.url); // appending
-        console.log(imagePath); // For debugging. This is the entire path, /home/thomas/Documents/Node/ImageApp/webapp/dist/next.js
-        fs.readFile(imagePath, (error: any, data: any)=>{
+        const scriptPath= path.join(__dirname, req.url); // appending
+        console.log(scriptPath); // For debugging. This is the entire path, /home/thomas/Documents/Node/ImageApp/webapp/dist/next.js
+        fs.readFile(scriptPath, (error: any, data: any)=>{
             if (error){
                 res.writeHead(404, {'Content-Type': 'text/plain'});
                 res.end('File not Found...');
