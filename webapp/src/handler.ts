@@ -39,6 +39,24 @@ export const handler = (req: IncomingMessage, res:ServerResponse) => {
         });
         return;
     }
+
+    if(req.url?.endsWith('.js')){
+
+        console.log(req.url); // For debugging. This is the vanilla url of the request, i.e., next.js
+        const imagePath= path.join(__dirname, req.url); // appending
+        console.log(imagePath); // For debugging. This is the entire path, /home/thomas/Documents/Node/ImageApp/webapp/dist/next.js
+        fs.readFile(imagePath, (error: any, data: any)=>{
+            if (error){
+                res.writeHead(404, {'Content-Type': 'text/plain'});
+                res.end('File not Found...');
+                return;
+            }
+            // all images are jpeg
+            res.writeHead(200, {'Content-Type': 'text/javascript'});
+            res.end(data); // send image to user
+        });
+        return;
+    }
     
     fs.readFile('dist/index.html', function(error: any, data: Buffer){
         // Using dist/index.html because this logic ran from dist directory where JavaScript files are
