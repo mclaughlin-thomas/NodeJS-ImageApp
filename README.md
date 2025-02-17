@@ -8,7 +8,7 @@ This application allows users to flip through images provided by server.
 Navigate to: ```/home/thomas/Documents/Node/ImageApp/webapp``` and ```run npm``` start to start the server.
 Once running, navigate to the browser and go to ```localhost:8000``` to view the application
 
-## Things
+## Notable Observations
 - All assets are requested
   - Images, additional JavaScript, html, etc.
     - all files...
