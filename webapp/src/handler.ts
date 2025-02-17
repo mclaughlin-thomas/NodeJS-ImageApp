@@ -61,7 +61,7 @@ export const handler = (req: IncomingMessage, res:ServerResponse) => {
     
     fs.readFile('dist/index.html', function(error: any, data: Buffer){
         // Using dist/index.html because this logic ran from dist directory where JavaScript files are
-
+        console.log("Requesting HTML");
         if(error){
             res.writeHead(500, {'Content-Type': 'text/plain'});
             res.write('Error!');
