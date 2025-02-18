@@ -42,7 +42,7 @@ const handler = (req, res) => {
         });
         return;
     }
-    if (req.url?.endsWith('/loop')) {
+    if (req.url?.endsWith('/block')) {
         // Every time the user hits next image, a request for next.js is made.
         console.log("Starting count!"); // For debugging. This is the vanilla url of the request, i.e., next.js
         console.log("Count ended!"); // For debugging. This is the vanilla url of the request, i.e., next.js
