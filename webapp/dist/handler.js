@@ -59,6 +59,7 @@ const handler = async (req, res) => {
             await promises_1.writePromise.bind(res)(msg + "\n");
         }
         await promises_1.endPromise.bind(res)("Done");
+        return;
     }
     fs.readFile('dist/index.html', function (error, data) {
         // Using dist/index.html because this logic ran from dist directory where JavaScript files are

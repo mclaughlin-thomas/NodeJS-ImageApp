@@ -18,12 +18,6 @@ const nextImage = () => {
 }
 
 const loop = () => {
-    fetch("http://localhost:8000/block",{
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({})
-    })
+    fetch("http://localhost:8000/block")
     
 }

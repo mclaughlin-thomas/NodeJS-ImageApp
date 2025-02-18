@@ -80,6 +80,7 @@ export const handler = async (req: IncomingMessage, res:ServerResponse) => {
             await writePromise.bind(res)(msg + "\n");
         }
         await endPromise.bind(res)("Done");
+        return;
     }
     
     fs.readFile('dist/index.html', function(error: any, data: Buffer){
