@@ -9,8 +9,11 @@ const promises_1 = require("./promises");
 const fs = require('fs');
 const path = require('path');
 const blockTotal = 2000000000;
-const blockIterations = 5;
+const blockIterations = 10;
 let block_shared_counter = 0;
+const betterTotal = 2000000000;
+const betterIterations = 10;
+let better_shared_counter = 0;
 const handler = async (req, res) => {
     if (req.url?.startsWith('/images/')) {
         // Our images have requests as well!
@@ -48,7 +51,7 @@ const handler = async (req, res) => {
     }
     if (req.url?.endsWith('/block')) {
         // Every time the user hits next image, a request for next.js is made.
-        console.log("Starting count!"); // For debugging. This is the vanilla url of the request, i.e., next.js
+        console.log("Starting count block!"); // For debugging. This is the vanilla url of the request, i.e., next.js
         const request = block_shared_counter++;
         for (let iter = 0; iter < blockIterations; iter++) {
             for (let count = 0; count < blockTotal; count++) {
@@ -62,8 +65,23 @@ const handler = async (req, res) => {
         return;
     }
     if (req.url?.endsWith('/better')) {
-        // Every time the user hits next image, a request for next.js is made.
-        console.log("This is better!"); // For debugging. This is the vanilla url of the request, i.e., next.js
+        console.log("Starting count better!"); // For debugging. This is the vanilla url of the request, i.e., next.js
+        const request = better_shared_counter++;
+        const iterate = async (iter = 0) => {
+            for (let count = 0; count < betterTotal; count++) {
+                count++;
+            }
+            const msg = `Request: ${request}, Iteration: ${(iter)}`;
+            console.log(msg);
+            await promises_1.writePromise.bind(res)(msg + "\n");
+            if (iter == betterIterations - 1) {
+                await promises_1.endPromise.bind(res)("Done");
+            }
+            else {
+                setImmediate(() => iterate(++iter));
+            }
+        };
+        iterate();
         return;
     }
     fs.readFile('dist/index.html', function (error, data) {
