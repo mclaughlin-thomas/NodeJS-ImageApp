@@ -17,7 +17,12 @@ const nextImage = () => {
     document.getElementById("currImage").src = "images/" + images[currentImageIndex];
 }
 
-const loop = () => {
+const blockLoop = () => {
     fetch("http://localhost:8000/block")
+    
+}
+
+const betterLoop = () => {
+    fetch("http://localhost:8000/better")
     
 }

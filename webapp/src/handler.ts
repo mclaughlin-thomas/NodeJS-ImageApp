@@ -21,9 +21,13 @@ import { endPromise, writePromise } from "./promises";
 const fs= require('fs');
 const path= require('path');
 
-const total = 2_000_000_000;
-const iterations = 5;
-let shared_counter = 0;
+const blockTotal = 2_000_000_000;
+const blockIterations = 5;
+let block_shared_counter = 0;
+
+const betterTotal = 2_000_000_000;
+const betterIterations = 5;
+let better_shared_counter = 0;
 
 export const handler = async (req: IncomingMessage, res:ServerResponse) => {
     
@@ -31,7 +35,7 @@ export const handler = async (req: IncomingMessage, res:ServerResponse) => {
         // Our images have requests as well!
         // Every time the user hits next image, this will run.
 
-        console.log(req.url); // For debugging. This is the vanilla url of the request, i.e., /images/auspicious.jpg
+        //console.log(req.url); // For debugging. This is the vanilla url of the request, i.e., /images/auspicious.jpg
         const imagePath= path.join(__dirname, req.url); // appending
         console.log(imagePath); // For debugging. This is the entire path, /home/thomas/Documents/Node/ImageApp/webapp/dist/images/auspicious.jpg
         fs.readFile(imagePath, (error: any, data: any)=>{
@@ -50,7 +54,7 @@ export const handler = async (req: IncomingMessage, res:ServerResponse) => {
     if(req.url?.endsWith('.js')){
         // Every time the user hits next image, a request for next.js is made.
 
-        console.log(req.url); // For debugging. This is the vanilla url of the request, i.e., next.js
+        //console.log(req.url); // For debugging. This is the vanilla url of the request, i.e., next.js
         const scriptPath= path.join(__dirname, req.url); // appending
         console.log(scriptPath); // For debugging. This is the entire path, /home/thomas/Documents/Node/ImageApp/webapp/dist/next.js
         fs.readFile(scriptPath, (error: any, data: any)=>{
@@ -70,9 +74,9 @@ export const handler = async (req: IncomingMessage, res:ServerResponse) => {
         // Every time the user hits next image, a request for next.js is made.
 
         console.log("Starting count!"); // For debugging. This is the vanilla url of the request, i.e., next.js
-        const request = shared_counter++;
-        for (let iter = 0; iter < iterations; iter++) {
-            for (let count = 0; count < total; count++) {
+        const request = block_shared_counter++;
+        for (let iter = 0; iter < blockIterations; iter++) {
+            for (let count = 0; count < blockTotal; count++) {
                 count++;
             }
             const msg = `Request: ${request}, Iteration: ${(iter)}`;
@@ -81,6 +85,34 @@ export const handler = async (req: IncomingMessage, res:ServerResponse) => {
         }
         await endPromise.bind(res)("Done");
         return;
+    }
+
+    if(req.url?.endsWith('/better')){
+
+
+        // export const handler = async (req: IncomingMessage, res: ServerResponse) => {
+        //     const request = shared_counter++;
+        //     const iterate = async (iter: number = 0) => {
+        //         for (let count = 0; count < total; count++) {
+        //             count++;
+        //         }
+        //         const msg = `Request: ${request}, Iteration: ${(iter)}`;
+        //         console.log(msg);
+        //         await writePromise.bind(res)(msg + "\n");
+        //         if (iter == iterations -1) {
+        //             await endPromise.bind(res)("Done");
+        //         }
+        //         else {
+        //             setImmediate(() => iterate(++iter));
+        //         }
+        //     }
+        //     iterate();
+        // };
+
+        console.log("This is better!"); // For debugging. This is the vanilla url of the request, i.e., next.js
+
+        return;
+        
     }
     
     fs.readFile('dist/index.html', function(error: any, data: Buffer){
