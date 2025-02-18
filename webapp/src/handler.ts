@@ -15,10 +15,17 @@
 
 
 import { IncomingMessage, ServerResponse } from "http";
+import { endPromise, writePromise } from "./promises";
+
+
 const fs= require('fs');
 const path= require('path');
 
-export const handler = (req: IncomingMessage, res:ServerResponse) => {
+const total = 2_000_000_000;
+const iterations = 5;
+let shared_counter = 0;
+
+export const handler = async (req: IncomingMessage, res:ServerResponse) => {
     
     if(req.url?.startsWith('/images/')){
         // Our images have requests as well!
@@ -63,8 +70,16 @@ export const handler = (req: IncomingMessage, res:ServerResponse) => {
         // Every time the user hits next image, a request for next.js is made.
 
         console.log("Starting count!"); // For debugging. This is the vanilla url of the request, i.e., next.js
-        console.log("Count ended!"); // For debugging. This is the vanilla url of the request, i.e., next.js
-        return;
+        const request = shared_counter++;
+        for (let iter = 0; iter < iterations; iter++) {
+            for (let count = 0; count < total; count++) {
+                count++;
+            }
+            const msg = `Request: ${request}, Iteration: ${(iter)}`;
+            console.log(msg);
+            await writePromise.bind(res)(msg + "\n");
+        }
+        await endPromise.bind(res)("Done");
     }
     
     fs.readFile('dist/index.html', function(error: any, data: Buffer){
