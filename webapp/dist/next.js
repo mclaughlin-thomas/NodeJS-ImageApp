@@ -16,3 +16,15 @@ const nextImage = () => {
     // Updating the currImage element's source to images/<the next image name>
     document.getElementById("currImage").src = "images/" + images[currentImageIndex];
 }
+
+const loop = () => {
+    console.log("test");
+    fetch("http://localhost:8000/loop",{
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({})
+    })
+    
+}

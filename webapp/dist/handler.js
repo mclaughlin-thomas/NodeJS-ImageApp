@@ -42,6 +42,12 @@ const handler = (req, res) => {
         });
         return;
     }
+    if (req.url?.endsWith('/loop')) {
+        // Every time the user hits next image, a request for next.js is made.
+        console.log("Starting count!"); // For debugging. This is the vanilla url of the request, i.e., next.js
+        console.log("Count ended!"); // For debugging. This is the vanilla url of the request, i.e., next.js
+        return;
+    }
     fs.readFile('dist/index.html', function (error, data) {
         // Using dist/index.html because this logic ran from dist directory where JavaScript files are
         console.log("Requesting HTML");
