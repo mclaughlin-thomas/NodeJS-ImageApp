@@ -68,6 +68,9 @@ const handler = async (req, res) => {
         console.log("Starting count better!"); // For debugging. This is the vanilla url of the request, i.e., next.js
         const request = better_shared_counter++;
         const iterate = async (iter = 0) => {
+            if (iter > 0) {
+                await new Promise((resolve) => setImmediate(resolve));
+            }
             for (let count = 0; count < betterTotal; count++) {
                 count++;
             }

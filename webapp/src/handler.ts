@@ -93,6 +93,11 @@ export const handler = async (req: IncomingMessage, res:ServerResponse) => {
 
         const request = better_shared_counter++;
         const iterate = async (iter: number = 0) => {
+
+            if (iter > 0){
+                await new Promise((resolve) => setImmediate(resolve));
+            }
+
             for (let count = 0; count < betterTotal; count++) {
                 count++;
             }
